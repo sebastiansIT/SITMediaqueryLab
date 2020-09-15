@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="viewport" content="width=device-width" />
+    
+	<meta charset="utf-8" />
+    <title>CSS Media Types &amp; Queries &ndash; Lab &ndash; Human Injection</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+
+    <style>
+    .testcases div h4:before {content:'Media Type “'}
+
+	@media braille { 
+		#braille_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#braille_test h4:after {content:'” is applicable'}
+	}
+	@media embossed { 
+		#embossed_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#embossed_test h4:after {content:'” is applicable'}
+	}
+	@media handheld { 
+		#handheld_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#handheld_test h4:after {content:'” is applicable'}
+	}
+	@media print { 
+		#print_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#print_test h4:after {content:'” is applicable'}
+	}
+	@media projection { 
+		#projection_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#projection_test h4:after {content:'” is applicable'}
+	}
+	@media screen { 
+		#screen_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#screen_test h4:after {content:'” is applicable'}
+	}
+	@media speech { 
+		#speech_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#speech_test h4:after {content:'” is applicable'}
+		#aural_test { display:none; }
+	}
+	@media aural { 
+		#aural_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#aural_test h4:after {content:'” is applicable'}
+	}
+	@media tty { 
+		#tty_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#tty_test h4:after {content:'” is applicable'}
+	}
+	@media tv { 
+		#tv_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#tv_test h4:after {content:'” is applicable'}
+	}
+	@media all { 
+		#all_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#all_test h4:after {content:'” is applicable'}
+	}
+	#only_test h4:before {content:'Media queries with ”'}
+	#only_test h4:after {content:'” are not supported'}
+	@media only all {
+		#only_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#only_test h4:after {content:'” are supported'}
+	}
+	#not_test h4:before {content:'Media queries with ”'}
+	#not_test h4:after {content:'” are not supported'}
+	@media not Screen {
+		#not_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#not_test h4:after {content:'” are supported'}
+		#notPrintExample { display: none; }
+	}
+	@media not Print {
+		#not_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#not_test h4:after {content:'” are supported'}
+		#notScreenExample { display: none; }
+	}
+	#unknown_test h4:before {content:'Media queries with ”'}
+	#unknown_test h4:after {content:'” are not supported'}
+	@media unknown {
+		#unknown_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#unknown_test h4:after {content:'” are supported'}
+		#notWnknownExample { display: none; }
+	}
+	@media not unknown {
+		#unknown_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#unknown_test h4:after {content:'” are supported'}
+		#unknownExample { display: none; }
+	}
+    </style>
+</head>
+<body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>CSS Media Types</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="all_test">
+					<h4>All</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<pre><code class="css">@media all</code></pre>
+				</section>
+				<section id="print_test">
+					<h4>Print</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<pre><code class="css">@media print</code></pre>
+				</section>
+				<section id="screen_test">
+					<h4>Screen</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<pre><code class="css">@media screen</code></pre>
+				</section>
+				<section id="speech_test">
+					<h4>Speech</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<pre><code class="css">@media speech</code></pre>
+				</section>
+				<section id="braille_test" class="deprecated">
+					<h4>Braille</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media braille</code></pre>
+				</section>
+				<section id="embossed_test" class="deprecated">
+					<h4>Embossed</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media embossed</code></pre>
+				</section>
+				<section id="handheld_test" class="deprecated">
+					<h4>Handheld</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media handheld</code></pre>
+				</section>
+				<section id="projection_test" class="deprecated">
+					<h4>Projection</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media projection</code></pre>
+				</section>
+				<section id="aural_test" class="deprecated">
+					<h4>Aural</h4>
+					<p>The aural type is defined in CSS 2.</a>
+					<p>It is deprecated since <a href="https://www.w3.org/TR/CSS2/aural.html">CSS 2.1</a>. Use "speech" instead.</p>
+					<pre><code class="css">@media aural</code></pre>
+				</section>
+				<section id="tty_test" class="deprecated">
+					<h4>TTY</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media tty</code></pre>
+				</section>
+				<section id="tv_test" class="deprecated">
+					<h4>TV</h4>
+					<p>This and other media types are specified in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 2.1</a>.</p>
+					<p>This media type is deprecated in <a href="http://www.w3.org/TR/CSS2/media.html#at-media-rule">CSS 4 Media Queries</a>.</p>
+					<pre><code class="css">@media tv</code></pre>
+				</section>
+			</div>
+		</section>
+
+		<section class="testcases"> 
+			<header>
+				<h3>Reserved Words</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="only_test">
+					<h4>Only</h4>
+					<p>The keyword ”only” is specified in <a href="http://dev.w3.org/csswg/mediaqueries-3/#media0">Media Queries Level 3</a>.</p>
+					<pre><code class="css">@media only all</code></pre>
+				</section>
+				<section id="not_test">
+					<h4>Not</h4>
+					<p>The keyword ”not” is specified in <a href="http://dev.w3.org/csswg/mediaqueries-3/#media0">Media Queries Level 3</a>.</p>
+					<pre id="notScreenExample">@media not Screen</code></pre>
+					<pre id="notPrintExample">@media not Print</code></pre>
+				</section>
+				<section id="unknown_test">
+					<h4>Unknown</h4>
+					<pre id="unknownExample">@media unknown</code></pre>
+					<pre id="notUnknownExample">@media not unknown</code></pre>
+				</section>
+			</div>
+		</section>		
+	</main>
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li class="active"><a href="mediatypes.html" title="Test Media Types and Keywords" rel="self">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test CSS3 Media Queries for Color Media Features">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+    
+	<meta charset="utf-8" />
+    <title>Interaction Media Features &ndash; Lab &ndash; Human Injection</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+  </head>
+  <body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>Pointing Device Quality</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="pointer_none_test">
+					<h4>Pointer: none</h4>
+					<pre><code class="css">@media only all and (pointer: none)</code></pre>
+					<style id="pointer_none_style">
+						@media only all and (pointer: none) { 
+							#pointer_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#pointer_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="pointer_coarse_test">
+					<h4>Pointer: coarse</h4>
+					<pre><code class="css">@media only all and (pointer: coarse)</code></pre>
+					<style id="pointer_coarse_style">
+						@media only all and (pointer: coarse) { 
+							#pointer_coarse_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#pointer_coarse_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="pointer_fine_test">
+					<h4>Pointer: fine</h4>
+					<pre><code class="css">@media only all and (pointer: fine)</code></pre>
+					<style id="pointer_fine_style">
+						@media only all and (pointer: fine) { 
+							#pointer_fine_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#pointer_fine_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="anypointer_none_test">
+					<h4>Any-Pointer: none</h4>
+					<pre><code class="css">@media only all and (any-pointer: none)</code></pre>
+					<style id="anypointer_none_style">
+						@media only all and (any-pointer: none) { 
+							#anypointer_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anypointer_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="anypointer_coarse_test">
+					<h4>Any-Pointer: coarse</h4>
+					<pre><code class="css">@media only all and (any-pointer: coarse)</code></pre>
+					<style id="anypointer_coarse_style">
+						@media only all and (any-pointer: coarse) { 
+							#anypointer_coarse_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anypointer_coarse_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="anypointer_fine_test">
+					<h4>Any-Pointer: fine</h4>
+					<pre><code class="css">@media only all and (any-pointer: fine)</code></pre>
+					<style id="anypointer_fine_style">
+						@media only all and (any-pointer: fine) { 
+							#anypointer_fine_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anypointer_fine_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Hover Capability</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="hover_none_test">
+					<h4>Hover: none</h4>
+					<pre><code class="css">@media only all and (hover: none)</code></pre>
+					<style id="hover_none_style">
+						@media only all and (hover: none) { 
+							#hover_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#hover_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="hover_ondemand_test" class="removed">
+					<h4>Hover: on-demand</h4>
+					<pre><code class="css">@media only all and (hover: on-demand)</code></pre>
+					<style id="hover_ondemand_style">
+						@media only all and (hover: on-demand) { 
+							#hover_ondemand_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#hover_ondemand_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+					<p>The Value "on-demand" is removed from the specifications working draft at 6 July 2016. 
+					It is last described in the <a href="https://www.w3.org/TR/2016/WD-mediaqueries-4-20160126/">
+					Version from 26 January 2016</a>.</p>
+				</section>
+				<section id="hover_test">
+					<h4>Hover: hover</h4>
+					<pre><code class="css">@media only all and (hover: hover)</code></pre>
+					<style id="hover_style">
+						@media only all and (hover: hover) { 
+							#hover_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#hover_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="hover_webkit_test" class="proprietary">
+					<h4>Hover: none (Webkit style)</h4>
+					<pre><code class="css">@media only all and (hover: 0)</code></pre>
+					<style id="hover_webkit_style">
+						@media only all and (hover: 0) { 
+							#hover_webkit_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#hover_webkit_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="anyhover_none_test">
+					<h4>Any-Hover: none</h4>
+					<pre><code class="css">@media only all and (any-hover: none)</code></pre>
+					<style id="anyhover_none_style">
+						@media only all and (any-hover: none) { 
+							#anyhover_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anyhover_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="anyhover_ondemand_test" class="removed">
+					<h4>Any-Hover: on-demand</h4>
+					<pre><code class="css">@media only all and (any-hover: on-demand)</code></pre>
+					<style id="anyhover_ondemand_style">
+						@media only all and (any-hover: on-demand) { 
+							#anyhover_ondemand_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anyhover_ondemand_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+					<p>The Value "on-demand" is removed from the specifications working draft at 6 July 2016. 
+					It is last described in the <a href="https://www.w3.org/TR/2016/WD-mediaqueries-4-20160126/">
+					Version from 26 January 2016</a>.</p>
+				</section>
+				<section id="anyhover_test">
+					<h4>Any-Hover: hover</h4>
+					<pre><code class="css">@media only all and (any-hover: hover)</code></pre>
+					<style id="anyhover_style">
+						@media only all and (any-hover: hover) { 
+							#anyhover_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#anyhover_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>		
+			</div>
+		</section>
+	</main>
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test Media Queries for Color Media Features">Color Media Features</a></li>
+			<li class="active"><a href="interaction.html" title="Test Media Queries for Interaction Media Feature" rel="self">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+  </body>
+</html>

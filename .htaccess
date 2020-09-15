@@ -1,0 +1,11 @@
+RewriteEngine on
+RewriteBase   /mediaqueries/
+RewriteRule   ^mediaqueries_sizes\.html$ dimensions.html [R=permanent]
+RewriteRule   ^mediaqueries_displays\.html$ display.html [R=permanent]
+RewriteRule   ^mediaqueries_colors\.html$ colors.html [R=permanent]
+RewriteRule   ^mediaqueries_level4\.html$ index.html [R=permanent]
+RewriteRule   ^mediatypes_proprietary\.html$ proprietary.html [R=permanent]
+RewriteRule   ^featurequeries\.html$ others.html [R=permanent]
+
+
+

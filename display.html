@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    	<!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' />
+	<meta name="viewport" content="width=device-width" />
+    
+	<meta charset="utf-8" />
+	<title>Display Quality Media Features &ndash; Lab &ndash; Human Injection</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+   
+	<script>
+		$(document).ready(function(){
+			$('input[type=number]').change(function(){
+				if ($(this).attr('id') === "devicepixelratio") {
+					$(this).parents('div').find('#'+ $(this).attr('id') +'_style').text(
+					"@media only all and (-webkit-min-device-pixel-ratio:" + $(this).val() + "), "
+						+ "only all and (-o-min-device-pixel-ratio:" + $(this).val() + "/1), "
+						+ "only all and (min--moz-device-pixel-ratio:" + $(this).val() + ") { " 
+				      	+ "#"+ $(this).attr('id') +"_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+				      	+ "#"+ $(this).attr('id') +"_test h4:after {content:'” is applicable'} } "
+					);
+				}
+				else {
+					$(this).parents('div').find('#'+ $(this).attr('id') +'_style').text( 
+						"@media only all and (" + $(this).data('query') + ":" + $(this).val() + $(this).parents('form').find('input:radio[name=unit]:checked').val() + ") { " 
+				      + "#"+ $(this).attr('id') +"_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+				      + "#"+ $(this).attr('id') +"_test h4:after {content:'” is applicable'} } "
+					);
+				}
+				$(this).parents('div').find('.' +$(this).attr('id')).text( $(this).val() );
+			});
+			
+			$('input[type=radio]').change(function(){
+				$(this).parents('div').find('input[type=number]').change();
+				$(this).parents('div').find('.unit').text($(this).parents('form').find('input:radio[name=unit]:checked').val());
+			});
+			
+			$('#resolution_test input[type=radio]').change(function(){
+				$('.resolution').text(getResolution($(this).parents('form').find('input:radio[name=unit]:checked').val()));
+				$('#resolution').val(getResolution($(this).parents('form').find('input:radio[name=unit]:checked').val()));
+				$(this).parents('div').find('#resolution_style').text( 
+					"@media only all and (resolution:" + getResolution($(this).parents('form').find('input:radio[name=unit]:checked').val()) + $(this).parents('form').find('input:radio[name=unit]:checked').val() + ") { " 
+			      + "#resolution_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+			      + "#resolution_test h4:after {content:'” is applicable'} } "
+				);
+			});
+
+			$('.resolution').text(getResolution("dpi"));
+			$('#resolution').val(getResolution("dpi"));
+			
+			$('#resolution_style').text(
+				"@media only all and (resolution:" + getResolution("dpi") + "dpi) { " 
+				+ "	#resolution_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+				+ "	#resolution_test h4:after {content:'” is applicable'} "
+				+ "} " 
+			);
+			
+			$('.devicepixelratio').text(("devicePixelRatio" in window ? devicePixelRatio : "2"));
+			$('#devicepixelratio').val(("devicePixelRatio" in window ? devicePixelRatio : "2"));
+			$('#devicepixelratio_style').text(
+				"@media only all and (-webkit-min-device-pixel-ratio:" + ("devicePixelRatio" in window ? devicePixelRatio : "2") + "), "
+						+ "only all and (-o-min-device-pixel-ratio:" + ("devicePixelRatio" in window ? devicePixelRatio : "2") + "/1), "
+						+ "only all and (min--moz-device-pixel-ratio:" + ("devicePixelRatio" in window ? devicePixelRatio : "2") + ") { " 
+				      	+ "#"+ "devicepixelratio_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+				      	+ "#"+ "devicepixelratio_test h4:after {content:'” is applicable'} } "
+			);
+		});
+	</script>
+  </head>
+  <body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>Resolution</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="resolutionmin_test">
+					<h4>Min-Resolution <span class="resolutionmin">30</span><span class="unit">dpi</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="resolutionmin">Set min resolution</label>: 
+						<input type="number" id="resolutionmin" name="resolutionmin" data-query="min-resolution" min="1" max="1000" value="1" />
+						<input id="unitdpimin" type="radio" name="unit" value="dpi" checked="checked" /><label for="unitdpimin" title="dots per CSS ‘inch’">dpi</label>
+						<input id="unitdpcmmin" type="radio" name="unit" value="dpcm" /><label for="unitdpcmmin" title="dots per CSS ‘centimeter’ ">dpcm</label>
+						<input id="unitdppxmin" type="radio" name="unit" value="dppx" /><label for="unitdppxmin" title="dots per CSS pixel ">dppx</label>
+						<input type="submit" value="set" />
+					</form>
+					<pre><code class="css">@media only all and (min-resolution: <span class="resolutionmin">30</span><span class="unit">dpi</span>)</code></pre>
+					<style id="resolutionmin_style">
+						@media only all and (min-resolution:30dpi) {  
+							#resolutionmin_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
+							#resolutionmin_test h4:after {content:'” is applicable'} 
+						}
+					</style>
+				</section>		
+				<section id="resolution_test">
+					<h4>Resolution <span class="resolution">220</span><span class="unit">dpi</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="resolutioninput">Set resolution</label>: 
+						<input type="number" id="resolution" name="resolution" data-query="resolution" min="1" max="300" value="220" />
+						<input id="unitdpiresolution" type="radio" name="unit" value="dpi" checked="checked" /><label for="unitdpimin" title="dots per CSS ‘inch’">dpi</label>
+						<input id="unitdpcmresolution" type="radio" name="unit" value="dpcm" /><label for="unitdpcmmin" title="dots per CSS ‘centimeter’ ">dpcm</label>
+						<input id="unitdppxresolution" type="radio" name="unit" value="dppx" /><label for="unitdppxresolution" title="dots per CSS pixel ">dppx</label>
+						<input type="submit" value="set" />
+					</form>			
+					<pre><code class="css">@media only all and (resolution: <span class="resolution">220</span><span class="unit">dpi</span>)</code></pre>
+					<p>Resolution in combination with dpcm does not work well due to rounding differences. 96dpi are 37.795275552dpcm and not 38dpcm.</p>
+					<style id="resolution_style">
+						@media only all and (resolution:220dpi) {  
+							#resolution_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
+							#resolution_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+				</section>
+				<section id="devicepixelratio_test" class="proprietary">
+					<h4>Min Device Pixel Ratio <span class="devicepixelratio">2</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="devicepixelratio">Set min device pixel ratio</label>: 
+						<input type="number" id="devicepixelratio" name="devicepixelratio" data-query="min-device-pixel-ratio" min="1" max="3" step="0.1" value="2" />			
+						<input type="submit" value="set" />
+					</form>
+					<pre><code class="css">@media only all and (-webkit-min-device-pixel-ratio: <span class="devicepixelratio">2</span>), 
+only all and (-o-min-device-pixel-ratio:<span class="devicepixelratio">2</span>/1),
+only all and (min--moz-device-pixel-ratio:<span class="devicepixelratio">2</span>)
+					</code></pre>
+					<style id="devicepixelratio_style">
+						@media 	only all and (-webkit-min-device-pixel-ratio:2),
+							only all and (-o-min-device-pixel-ratio:2/1),
+							only all and (min--moz-device-pixel-ratio:2)					
+							{  
+							   #devicepixelratio_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							   #devicepixelratio_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+				</section>
+				<section id="resolution_infinite">
+					<h4>Resolution Infinite</h4>			
+					<pre><code class="css">@media only all and (resolution: infinite)</code></pre>
+					<style id="resolution_style">
+						@media only all and (resolution: infinite) {  
+							#resolution_infinite { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
+							#resolution_infinite h4:after {content:'” is applicable'} 
+						} 
+					</style>
+				</section>
+				<section id="resolutionmax_test">
+					<h4>Max-Resolution <span class="resolutionmax">600</span><span class="unit">dpi</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="resolutionmax">Set max resolution</label>: 
+						<input type="number" id="resolutionmax" name="resolutionmax" data-query="max-resolution" min="1" max="1000" value="600" />
+						<input id="unitdpimax" type="radio" name="unit" value="dpi" checked="checked" /><label for="unitdpimax" title="dots per CSS ‘inch’">dpi</label>
+						<input id="unitdpcmmax" type="radio" name="unit" value="dpcm" /><label for="unitdpcmmax" title="dots per CSS ‘centimeter’ ">dpcm</label>
+						<input id="unitdppxmax" type="radio" name="unit" value="dppx" /><label for="unitdppxmax" title="dots per CSS pixel ">dppx</label>
+						<input type="submit" value="set" />
+					</form>
+					<pre><code class="css">@media only all and (max-resolution: <span class="resolutionmax">600</span><span class="unit">dpi</span>)</code></pre>
+					<style id="resolutionmax_style">
+						@media only all and (max-resolution:600dpi) {  
+							#resolutionmax_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
+							#resolutionmax_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+				</section>
+				<section id="resolutionrange_test">
+					<h4>1dpi &lt; resolution &lt; 600dpi</h4>
+					<pre><code class="css">@media all and (1dpi &lt; resolution &lt; 600dpi)</code></pre>
+					<style id="resolutionrange_style">
+						@media all and (1dpi &lt; resolution &lt; 600dpi) { 
+							#resolutionrange_test { background-color: green; border: 3px inset black; color:white; }
+							#resolutionrange_test h4:after {content:'” is applicable'} 
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		
+		<section class="testcases">
+			<header>
+				<h3>Scan &amp; Grid</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="scanprogressive_test">
+					<h4>Scan: Progressive</h4>
+					<style id="scanprogressive_style">
+						@media only tv and (scan: progressive) {
+							#scanprogressive_test { background-color: green; border: 3px inset black; color:white; } 
+							#scanprogressive_test h4:after {content:'” is applicable'} 
+						}
+					</style>
+					<pre><code class="css">@media only tv and (scan: progressive)</code></pre>
+				</section>
+				<section id="scaninterlace_test">
+					<h4>Scan: Interlace</h4>
+					<style id="scaninterlace_style">
+						@media only tv and (scan: interlace) {
+							#scaninterlace_test { background-color: green; border: 3px inset black; color:white; } 
+							#scaninterlace_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+					<pre><code class="css">@media only tv and (scan: interlace)</code></pre>
+				</section>
+				<section id="grid_test">
+					<h4>Grid</h4>
+					<style id="grid_style">
+						@media only all and (grid) {
+							#grid_test { background-color: green; border: 3px inset black; color:white; } 
+							#grid_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+					<pre><code class="css">@media only all and (grid)</code></pre>
+				</section>
+			</div>
+		</section>
+		
+		<section class="testcases">
+			<header>
+				<h3>Update-Frequency</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="updatefrequency_none_test">
+					<h4>Update-Frequency None</h4>
+					<pre><code class="css">@media only all and (update-frequency: none)</code></pre>
+					<style id="updatefrequency_none_style">
+						@media only all and (update-frequency: none) { 
+							#updatefrequency_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#updatefrequency_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="updatefrequency_slow_test">
+					<h4>Update-Frequency Slow</h4>
+					<pre><code class="css">@media only all and (update-frequency: slow)</code></pre>
+					<style id="updatefrequency_slow_style">
+						@media only all and (update-frequency: slow) { 
+							#updatefrequency_slow_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#updatefrequency_slow_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="updatefrequency_normal_test">
+					<h4>Update-Frequency Normal</h4>
+					<pre><code class="css">@media only all and (update-frequency: normal)</code></pre>
+					<style id="updatefrequency_normal_style">
+						@media only all and (update-frequency: normal) { 
+							#updatefrequency_normal_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#updatefrequency_normal_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		
+		<section class="testcases">
+			<header>
+				<h3>Overflow-block</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="overflowblock_none_test">
+					<h4>Overflow-Block None</h4>
+					<pre><code class="css">@media only all and (overflow-block: none)</code></pre>
+					<style id="overflowblock_none_style">
+						@media only all and (overflow-block: none) { 
+							#overflowblock_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#overflowblock_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="overflowblock_scroll_test">
+					<h4>Overflow-Block Scroll</h4>
+					<pre><code class="css">@media only all and (overflow-block: scroll)</code></pre>
+					<style id="overflowblock_scroll_style">
+						@media only all and (overflow-block: scroll) { 
+							#overflowblock_scroll_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#overflowblock_scroll_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="overflowblock_optionalpaged_test">
+					<h4>Overflow-Block Optional-Paged</h4>
+					<pre><code class="css">@media only all and (overflow-block: optional-paged)</code></pre>
+					<style id="overflowblock_optionalpaged_style">
+						@media only all and (overflow-block: optional-paged) { 
+							#overflowblock_optionalpaged_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#overflowblock_optionalpaged_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="overflowblock_paged_test">
+					<h4>Overflow-Block Paged</h4>
+					<pre><code class="css">@media only all and (overflow-block: paged)</code></pre>
+					<style id="overflowblock_paged_style">
+						@media only all and (overflow-block: paged) { 
+							#overflowblock_paged_test { background-color: green; border: 3px inset black; color:white; }
+							#overflowblock_paged_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>		
+			</div>
+		</section>
+		
+		<section class="testcases">
+			<header>
+				<h3>Overflow-inline</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="overflowinline_none_test">
+					<h4>Overflow-Inline None</h4>
+					<pre><code class="css">@media only all and (overflow-inline: none)</code></pre>
+					<style id="overflowinline_none_style">
+						@media only all and (overflow-inline: none) { 
+							#overflowinline_none_test { background-color: green; border: 3px inset black; color:white; }
+							#overflowinline_none_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="overflowinline_scroll_test">
+					<h4>Overflow-Inline Scroll</h4>
+					<pre><code class="css">@media only all and (overflow-inline: scroll)</code></pre>
+					<style id="overflowinline_scroll_style">
+						@media only all and (overflow-inline: scroll) { 
+							#overflowinline_scroll_test { background-color: green; border: 3px inset black; color:white; }
+							#overflowinline_scroll_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+	</main>  
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li class="active"><a href="display.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features" rel="self">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test CSS3 Media Queries for Color Media Features">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+  </body>
+</html>

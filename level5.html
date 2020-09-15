@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+  	<meta name="MobileOptimized" content="width" />
+  	<meta name="HandheldFriendly" content="true" />
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+  	<meta name="viewport" content="width=device-width" />
+  	<meta charset="utf-8" />
+    <title>Level 5 &ndash; Lab &ndash; Human Injection</title>
+  	<link rel="stylesheet" type="text/css" href="style.css" />
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="scripts.js"></script>
+  </head>
+  <body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>Ambient Light Level</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="lightlevel_dim_test">
+					<h4>Dim Light Level</h4>
+					<pre><code class="css">@media only all and (light-level: dim)</code></pre>
+					<style id="lightlevel_dim_style">
+						@media only all and (light-level: dim) {
+							#lightlevel_dim_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#lightlevel_dim_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="lightlevel_normal_test">
+					<h4>Normal Light Level</h4>
+					<pre><code class="css">@media only all and (light-level: normal)</code></pre>
+					<style id="lightlevel_normal_style">
+						@media only all and (light-level: normal) {
+							#lightlevel_normal_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#lightlevel_normal_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="lightlevel_washed_test">
+					<h4>Washed Light Level</h4>
+					<pre><code class="css">@media only all and (light-level: washed)</code></pre>
+					<style id="lightlevel_washed_style">
+						@media only all and (light-level: washed) {
+							#lightlevel_washed_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#lightlevel_washed_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+    <section class="testcases">
+			<header>
+				<h3>Display Technology</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="environmentblending_opaque_test">
+					<h4>Opaque Environment Blending</h4>
+					<pre><code class="css">@media only all and (environment-blending: opaque)</code></pre>
+					<style id="environmentblending_opaque_style">
+						@media only all and (environment-blending: opaque) {
+							#environmentblending_opaque_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#environmentblending_opaque_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="environmentblending_additive_test">
+					<h4>Additive Environment Blending</h4>
+					<pre><code class="css">@media only all and (environment-blending: additive)</code></pre>
+					<style id="environmentblending_additive_style">
+						@media only all and (environment-blending: additive) {
+							#environmentblending_additive_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#environmentblending_additive_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="environmentblending_subtractive_test">
+					<h4>Subtractive Environment Blending</h4>
+					<pre><code class="css">@media only all and (environment-blending: subtractive)</code></pre>
+					<style id="environmentblending_subtractive_style">
+						@media only all and (environment-blending: subtractive) {
+							#environmentblending_subtractive_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#environmentblending_subtractive_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Scripting Media Features</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="scripting_none_test">
+					<h4>Scripting none</h4>
+					<pre><code class="css">@media only all and (scripting: none)</code></pre>
+					<style id="scripting_none_style">
+						@media only all and (scripting: none) {
+							#scripting_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#scripting_none_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="scripting_initialonly_test">
+					<h4>Scripting initial-only</h4>
+					<pre><code class="css">@media only all and (scripting: initial-only)</code></pre>
+					<style id="scripting_initialonly_style">
+						@media only all and (scripting: initial-only) {
+							#scripting_initialonly_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#scripting_initialonly_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="scripting_enabled_test">
+					<h4>Scripting enabled</h4>
+					<pre><code class="css">@media only all and (scripting: enabled)</code></pre>
+					<style id="scripting_enabled_style">
+						@media only all and (scripting: enabled) {
+							#scripting_enabled_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#scripting_enabled_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Inverted Colors Detection</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="invert_inverted_test">
+					<h4>Inverted Colors</h4>
+					<pre><code class="css">@media only all and (inverted-colors: inverted)</code></pre>
+					<style>
+						@media only all and (inverted-colors: inverted) {
+							#invert_inverted_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#invert_inverted_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="invert_none_test">
+					<h4>Not Inverted Colors</h4>
+					<pre><code class="css">@media only all and (inverted-colors: none)</code></pre>
+					<style>
+						@media only all and (inverted-colors: none) {
+							#invert_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#invert_none_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Detection of Reduced Motion Preferences</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="motionPreferences_reduced_test">
+					<h4>Reduced Motions</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-motion: reduce)</code></pre>
+					<style>
+						@media only all and (prefers-reduced-motion: reduce) {
+							#motionPreferences_reduced_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#motionPreferences_reduced_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="motionPreferences_none_test">
+					<h4>No Preference for Motion</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-motion: no-preference)</code></pre>
+					<style>
+						@media only all and (prefers-reduced-motion: no-preference) {
+							#motionPreferences_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#motionPreferences_none_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+      <footer>
+        <p><a href="https://www.youtube.com/watch?v=-7ENwVFOh_I">YouTube video shows how to reduce motion in different OS</a>.</p> 
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Detection of Reduced Transparency Preferences</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="transparencyPreferences_reduced_test">
+					<h4>Reduced Transparency</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-transparency: reduce)</code></pre>
+					<style>
+						@media only all and (prefers-reduced-transparency: reduce) {
+							#transparencyPreferences_reduced_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#transparencyPreferences_reduced_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="transparencyPreferences_none_test">
+					<h4>No preference for transparency</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-transparency: no-preference)</code></pre>
+					<style>
+						@media only all and (prefers-reduced-transparency: no-preference) {
+							#transparencyPreferences_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#transparencyPreferences_none_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+    <section class="testcases">
+			<header>
+				<h3>Detection of Contrast Preferences</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="contrastpreferences_high_test">
+					<h4>High Contrast</h4>
+					<pre><code class="css">@media only all and (prefers-contrast: high)</code></pre>
+					<style>
+						@media only all and (prefers-contrast: high) {
+							#contrastpreferences_high_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#contrastpreferences_high_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="contrastpreferences_low_test">
+					<h4>Low Contrast</h4>
+					<pre><code class="css">@media only all and (prefers-contrast: low)</code></pre>
+					<style>
+						@media only all and (prefers-contrast: low) {
+							#contrastpreferences_low_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#contrastpreferences_low_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="contrastpreferences_nopreference_test">
+					<h4>No Preference for Contrast</h4>
+					<pre><code class="css">@media only all and (prefers-contrast: no-preference)</code></pre>
+					<style>
+						@media only all and (prefers-contrast: no-preference) {
+							#contrastpreferences_nopreference_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#contrastpreferences_nopreference_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+    <section class="testcases">
+			<header>
+				<h3>Detection of Color Schemes Preferences</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="colorscheme_dark_test">
+					<h4>Dark Color Scheme</h4>
+					<pre><code class="css">@media only all and (prefers-color-scheme: dark)</code></pre>
+					<style>
+						@media only all and (prefers-color-scheme: dark) {
+							#colorscheme_dark_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#colorscheme_dark_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="colorscheme_light_test">
+					<h4>Light Color Scheme</h4>
+					<pre><code class="css">@media only all and (prefers-color-scheme: light)</code></pre>
+					<style>
+						@media only all and (prefers-color-scheme: light) {
+							#colorscheme_light_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#colorscheme_light_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="colorscheme_nopreference_test">
+					<h4>No Preference for Color Scheme</h4>
+					<pre><code class="css">@media only all and (prefers-color-scheme: no-preference)</code></pre>
+					<style>
+						@media only all and (prefers-color-scheme: no-preference) {
+							#colorscheme_nopreference_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#colorscheme_nopreference_test h4:after { content:'” is applicable';}
+						}
+					</style>
+        </section>
+			</div>
+		</section>
+    <section class="testcases">
+			<header>
+				<h3>Detection of Forced Colors Palette</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="forcedcolors_active_test">
+					<h4>Forced Colors Active</h4>
+					<pre><code class="css">@media only all and (forced-colors: active)</code></pre>
+					<style>
+						@media only all and (forced-colors: active) {
+							#forcedcolors_active_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#forcedcolors_active_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+        <section id="forcedcolors_none_test">
+					<h4>None Forced Colors</h4>
+					<pre><code class="css">@media only all and (forced-colors: none)</code></pre>
+					<style>
+						@media only all and (forced-colors: none) {
+							#forcedcolors_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#forcedcolors_none_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+	</main>
+	<nav>
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test Media Queries for Color Media Features">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
+			<li class="active"><a href="level5.html" title="Test Media Queries Level 5 Features" rel="self">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+  </body>
+</html>

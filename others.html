@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <meta charset="utf-8" />
+    <title>Other Media Features &ndash; Lab &ndash; Human Injection</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="manifest" href="manifest.webapp">
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+
+    <style>
+    #support_test h4:before {content:'”'; }
+    #support_test h4:after {content:'” is not supported'; }
+    @supports (display: block) {
+        #support_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+        #support_test h4:after {content:'” is supported';}
+    }
+    #not_test h4:before {content:'Keyword ”';}
+    #not_test h4:after {content:'” is not supported';}
+    @supports not (display: unspezified) {
+        #not_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+        #not_test h4:after {content:'” is supported';}
+    }
+   
+    #displayModeFullscreen_test h4:before,
+    #displayModeStandalone_test h4:before,
+    #displayModeMinimalUi_test h4:before,
+    #displayModeBrowser_test  h4:before   { content:'Detection of ”'; }
+    @media all and (display-mode: fullscreen) {
+      #displayModeFullscreen_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+      #displayModeFullscreen_test h4:after { content:'” is applicable'; } 
+    }
+    @media all and (display-mode: standalone) {
+      #displayModeStandalone_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+      #displayModeStandalone_test h4:after { content:'” is applicable'; } 
+    }
+    @media all and (display-mode: minimal-ui) {
+      #displayModeMinimalUi_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+      #displayModeMinimalUi_test h4:after { content:'” is applicable'; }
+    }
+    @media all and (display-mode: browser) {
+      #displayModeBrowser_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+      #displayModeBrowser_test h4:after { content:'” is applicable'; }
+    }
+    
+    #deviceRadiusNull_test h4:before,
+    #deviceRadius50_test h4:before { content:'Detection of ”'; }
+    #deviceRadiusNull_test h4:after,
+    #deviceRadius50_test h4:after { content:'” is not supported'; }
+    @media all and (device-radius: 0%) {
+        #deviceRadiusNull_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+        #deviceRadiusNull_test h4:after { content:'” is applicable';}
+    }
+    @media all and (device-radius: 50%) {
+        #deviceRadius50_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+        #deviceRadius50_test h4:after { content:'” is applicable';}
+    }
+    
+    </style>
+</head>
+<body>
+    <header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>	
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+
+        <section class="testcases">
+            <header>
+				<h3><a href="https://www.w3.org/TR/css3-conditional/#at-supports">Feature Support Detection</a></h3>
+			</header>
+			<div class="sectionContent">
+				<section id="support_test">
+					<h4>@supports</h4>
+					<pre><code class="css">@supports (display: block)</code></pre>
+				</section>
+				<section id="not_test">
+					<h4>Not</h4>
+					<pre><code class="css">@supports not (display: unspezified)</code></pre>
+				</section>
+			</div>
+        </section>
+	
+        <section class="testcases">
+            <header>
+				<h3><a href="https://w3c.github.io/manifest/#the-display-mode-media-feature">Manifest for a web application</a></h3>
+			</header>
+			<div class="sectionContent">
+				<section id="displayModeFullscreen_test">
+					<h4>Fullscreen Display Mode</h4>
+					<pre><code class="css">@media all and (display-mode: fullscreen)</code></pre>
+				</section>
+				<section id="displayModeStandalone_test">
+					<h4>Standalone Display Mode</h4>
+					<pre><code class="css">@media all and (display-mode: standalone)</code></pre>
+				</section>
+				<section id="displayModeMinimalUi_test">
+					<h4>Minimal UI Display Mode</h4>
+					<pre><code class="css">@media all and (display-mode: minimal-ui)</code></pre>
+				</section>
+				<section id="displayModeBrowser_test">
+					<h4>Browser Display Mode</h4>
+					<pre><code class="css">@media all and (display-mode: browser)</code></pre>
+				</section>
+			</div>
+        </section>
+        
+        <section class="testcases">
+            <header>
+				<h3><a href="http://www.w3.org/TR/2015/WD-css-round-display-1-20150922/#device-radius-media-feature">CSS Round Display</a></h3>
+			</header>
+			<div class="sectionContent">
+				<section id="deviceRadiusNull_test">
+					<h4>Rectangular Display</h4>
+					<pre><code class="css">@media all and (device-radius: 0%)</code></pre>
+				</section>
+				<section id="deviceRadius50_test">
+					<h4>Round Display</h4>
+					<pre><code class="css">@media all and (device-radius: 50%)</code></pre>
+				</section>
+			</div>
+        </section>
+   
+    </main>
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test Media Queries for Color Media Features">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li class="active"><a href="others.html" title="Test CSS Feature Queries" rel="self">Other Media Features &amp; Similar Things</a></li> 
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+</body>
+</html>

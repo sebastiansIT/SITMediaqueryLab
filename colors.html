@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+    
+	<meta charset="utf-8" />
+    <title>Color Media Features &ndash; Lab &ndash; Human Injection</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" >
+		$(document).ready(function(){
+			$('#color').val(screen.colorDepth/3);
+			$('.color').text(screen.colorDepth/3);
+			$('#color_style').text( "@media only all and (color:" + screen.colorDepth/3 + ") { " 
+			  + "#color_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+			  + "#color_test h4:after {content:'” is applicable'} } ");
+			$('#monochrome').val(screen.colorDepth/3);
+			$('.monochrome').text(screen.colorDepth/3);
+			$('#monochrome_style').text( "@media only all and (monochrome:" + screen.colorDepth/3 + ") { " 
+			  + "#monochrome_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+			  + "#monochrome_test h4:after {content:'” is applicable'} } ");
+			
+			$('input[type=number]').change(function(){
+				var unit = $(this).parents('form').find('input:radio[name=unit]:checked');
+				if(unit.length > 0) 
+					unit = unit.val();
+				else 
+					unit = "";
+				$(this).parents('div').find('#'+ $(this).attr('id') +'_style').text( 
+					"@media only all and (" + $(this).data('query') + ":" + $(this).val() + unit + ") { " 
+				  + "#"+ $(this).attr('id') +"_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
+				  + "#"+ $(this).attr('id') +"_test h2:after {content:'” is applicable'} } "
+				);
+				$(this).parents('div').find('.' +$(this).attr('id')).text( $(this).val() );
+			});
+			
+			$('#highContrast_test form').on('submit change', function(event) {
+				$('.contrastmodevalue').text($(this).find('#contrastmode').val());
+				$('#highContrast_style').text(
+				  '@media screen and (-ms-high-contrast: ' + $(this).find('#contrastmode').val() + ') { '
+				+ '	#highContrast_test { background-color: green; border: 3px inset black; color:white; }'
+				+ '	#highContrast_test h2:after { content:"” is applicable";} '
+				+ '}'
+				);
+			});
+		});
+	</script>
+  </head>
+  <body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>Monochrome Displays</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="monochrome_yes_test">
+					<h4>Monochrome</h4>
+					<pre><code class="css">@media only all and (monochrome)</code></pre>
+					<style>
+					@media only all and (monochrome) { 
+						#monochrome_yes_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#monochrome_yes_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="monochrome_no_test">
+					<h4>Not monochrome</h4>
+					<pre><code class="css">@media only all and (monochrome: 0)</code></pre>
+					<style>
+					@media only all and (monochrome: 0) { 
+						#monochrome_no_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#monochrome_no_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="monochrome_min1_test">
+					<h4>Min-monochrome 1bit</h4>
+					<pre><code class="css">@media only all and (min-monochrome: 1)</code></pre>
+					<style>
+					@media only all and (min-monochrome: 1) { 
+						#monochrome_min1_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#monochrome_min1_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="monochrome_test">
+					<h4>Monochrome <span class="monochrome">4</span><span class="unit">bit</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="monochromeinput">Set color depth per chanel</label>: 
+						<input type="number" id="monochrome" name="monochrome" data-query="monochrome" min="0" max="16" value="4" />
+						<input type="submit" value="set" />
+					</form>	
+					<pre><code class="css">@media only all and (monochrome: <span class="monochrome">4</span>)</code></pre>
+					<style id="monochrome_style">
+						@media only all and (monochrome: 4) { 
+							#monochrome_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#monochrome_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="monochrome_max1024_test">
+					<h4>Max-monochrome 1024bit</h4>
+					<pre><code class="css">@media only all and (max-monochrome: 1024) and (min-monochrome: 1)</code></pre>
+					<style>
+					@media only all and (max-monochrome: 1024) and (min-monochrome: 1) { 
+						#monochrome_max1024_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#monochrome_max1024_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="monochromerange_test">
+					<h4>1 &lt; monochrome &lt; 1024</h4>
+					<pre><code class="css">@media all and (0 &lt; monochrome &lt; 1024)</code></pre>
+					<style>
+					@media all and (0 &lt; monochrome &lt; 1024) { 
+						#monochromerange_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#monochromerange_test h4:after {content:'” is applicable'} 
+					}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Color Displays</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="color_yes_test">
+					<h4>Color</h4>
+					<pre><code class="css">@media only all and (color)</code></pre>
+					<style>
+					@media only all and (color) { 
+						#color_yes_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#color_yes_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="color_no_test">
+					<h4>Not Color</h4>
+					<pre><code class="css">@media only all and (color: 0)</code></pre>
+					<style>
+					@media only all and (color: 0) { 
+						#color_no_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#color_no_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="color_min1_test">
+					<h4>Min-Color 1bit</h4>
+					<pre><code class="css">@media only all and (min-color: 1)</code></pre>
+					<style>
+					@media only all and (min-color: 1) { 
+						#color_min1_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#color_min1_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="color_test">
+					<h4>Color <span class="color">8</span><span class="unit">bit</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="colorinput">Set color depth per chanel</label>: 
+						<input type="number" id="color" name="color" data-query="color" min="0" max="16" value="8" />
+						<input type="submit" value="set" />
+					</form>			
+					<pre><code class="css">@media only all and (color: <span class="color">8</span>)</code></pre>
+					<style id="color_style">
+						@media only all and (color:8) {  
+							#color_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
+							#color_test h4:after {content:'” is applicable'} 
+						} 
+					</style>
+				</section>
+				<section id="max_color_test">
+					<h4>Max-Color 16bit</h4>
+					<pre><code class="css">@media only all and (max-color: 16) and (min-color: 1)</code></pre>
+					<style>
+					@media only all and (max-color: 16) and (min-color: 1) { 
+						#max_color_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#max_color_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorrange_test">
+					<h4>1 &lt; color &lt; 16</h4>
+					<pre><code class="css">@media all and (0 &lt; color &lt; 16)</code></pre>
+					<style>
+					@media all and (0 &lt; color &lt; 16) { 
+						#colorrange_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorrange_test h4:after {content:'” is applicable'} 
+					}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Paletted Color Screens</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="colorindex_test">
+					<h4>Indexed Colors</h4>
+					<pre><code class="css">@media only all and (color-index)</code></pre>
+					<style>
+					@media only all and (color-index) { 
+						#colorindex_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorindex_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorindex_not_test">
+					<h4>No Indexed Colors</h4>
+					<pre><code class="css">@media only all and (color-index: 0)</code></pre>
+					<style>
+					@media only all and (color-index: 0) { 
+						#colorindex_not_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorindex_not_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorindex_min1_test">
+					<h4>Min-Color-Index 1</h4>
+					<pre><code class="css">@media only all and (min-color-index: 1)</code></pre>
+					<style>
+					@media only all and (min-color-index: 1) { 
+						#colorindex_min1_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorindex_min1_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="color_index_test">
+					<h4>Color-Index <span class="color_index">256</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="colorinput">Set amount of indexed colors</label>: 
+						<input type="number" id="color_index" name="color_index" data-query="color-index" min="1" max="512" value="256" />
+						<input type="submit" value="set" />
+					</form>			
+					<pre><code class="css">@media only all and (color-index: <span class="color_index">256</span>)</code></pre>
+					<style id="color_index_style">
+						@media only all and (color-index: 256) { 
+							#color_index_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#color_index_test h4:after { content:'” is applicable';} 
+						}
+					</style>
+				</section>
+				<section id="colorindex_max1024_test">
+					<h4>Max-Color-Index 1024</h4>
+					<pre><code class="css">@media only all and (max-color-index: 1024) and (min-color-index: 1)</code></pre>
+					<style>
+					@media only all and (max-color-index: 1024) and (min-color-index: 1) { 
+						#colorindex_max1024_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorindex_max1024_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorindexrange_test">
+					<h4>1 &lt; color-index &lt; 1024</h4>
+					<pre><code class="css">@media all and (0 &lt; color &lt; 1024)</code></pre>
+					<style>
+					@media all and (0 &lt; color &lt; 1024) { 
+						#colorindexrange_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorindexrange_test h4:after {content:'” is applicable'} 
+					}
+					</style>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Color Display Quality</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="colorGamutSrgb_test">
+					<h4>Color Gamut sRGB</h4>
+					<pre><code class="css">@media only all and (color-gamut: srgb )</code></pre>
+					<style>
+					@media only all and (color-gamut: srgb) { 
+						#colorGamutSrgb_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorGamutSrgb_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorGamutP3_test">
+					<h4>Color Gamut DCI P3 Color Space</h4>
+					<pre><code class="css">@media only all and (color-gamut: p3 )</code></pre>
+					<style>
+					@media only all and (color-gamut: p3) { 
+						#colorGamutP3_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorGamutP3_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+				<section id="colorGamutRec2020_test">
+					<h4>Color Gamut ITU-R Recommendation BT.2020</h4>
+					<pre><code class="css">@media only all and (color-gamut: rec2020 )</code></pre>
+					<style>
+					@media only all and (color-gamut: rec2020) { 
+						#colorGamutRec2020_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#colorGamutRec2020_test h4:after { content:'” is applicable';} 
+					}
+					</style>
+				</section>
+			</div>
+		</section>
+		
+		<section class="testcases" id="MSHightContrast">
+			<header>
+				<h3><a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh465764.aspx" title="-ms-high-contrast media feature">Microsoft Hight Contrast</a></h3>
+			</header>
+			<div class="sectionContent">
+				<section id="highContrast_test" class="proprietary">
+					<h4>High Contrast <span class="contrastmodevalue">none</span></h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="colorinput">High contrast mode</label>: 
+						<select id="contrastmode" name="contrastmode" size="1">
+							<option name="active" title="active">active</option>
+							<option name="black-on-white" title="black-on-white">black-on-white</option>
+							<option name="white-on-black" title="white-on-black">white-on-black</option>
+							<option name="none" title="none" selected="selected">none</option>
+						</section>
+						<input type="submit" value="set" />
+					</form>			
+					<pre><code class="css">@media screen and (-ms-high-contrast: <span class="contrastmodevalue">none</span>)</code></pre>
+					<style id="highContrast_style">
+						@media screen and (-ms-high-contrast: none) { 
+							#highContrast_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#highContrast_test h4:after { content:'” is applicable';} 
+							#highContrast_test a { color: black; }
+						}
+					</style>
+					<p>Use to optimise websites and -apps when a high contrast theme is selected in windows. For more informations see the <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700340.aspx">MSDN</a>.</p>
+					<p>It is supported in Internet Explorer 10 and 11 only. It isn't supportet in Edge, Microsofts browser in Windows 10.</p>
+				</section>
+			</div>
+    </section>
+	</main>
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test CSS3 Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li class="active"><a href="colors.html" title="Test CSS3 Media Queries for Color Media Features" rel="self">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li><a href="proprietary.html" title="Test proprietary extensions">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>
+	</body>
+</html>

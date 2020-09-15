@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="viewport" content="width=device-width" />
+    
+	<meta charset="utf-8" />
+    <title>Proprietary Extensions &ndash; CSS Media Queries &ndash; Lab &ndash; Human Injection</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+
+    <style>
+	@media amzn-mobi {
+		#mobi7_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#mobi7_test h4:after {content:'” is supported'}
+	}
+	@media amzn-kf8 {
+		#kf8_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+		#kf8_test h4:after {content:'” is supported'}
+	}
+    </style>
+  </head>
+  <body>
+	<header role="banner">
+		<h1>Human Injection Laboratories</h1>
+	</header>	
+	<main>
+		<h2>CSS Media Queries Test Cases</h2>
+		<section class="testcases">
+			<header>
+				<h3>Kindle Devices (Mobi 7 or Kindle Format 8)</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="mobi7_test" class="proprietary">
+					<h4>amzn-mobi</h4>
+					<pre><code class="css">@media amzn-mobi</code></pre>
+				</section>
+				<section id="kf8_test" class="proprietary">
+					<h4>amzn-kf8</h4>
+					<pre><code class="css">@media amzn-kf8</code></pre>
+				</section>
+			</div>
+		</section>
+		<section class="testcases">
+			<header>
+				<h3>Mozilla Specific</h3>
+			</header>
+			<div class="sectionContent">
+				<section id="moz_osVersion_test" class="proprietary">
+					<h4>-moz-os-version</h4>
+					<form action="#" method="post" onsubmit="return false;">
+						<label for="osinput">OS Version</label>: 
+						<select id="osVersion" name="osVersion" size="1">
+							<option value="windows-win10">Windows 10</option>
+							<option value="windows-win8">Windows 8</option>
+							<option value="windows-win7">Windows 7</option>
+						</section>
+						<input type="submit" value="set" />
+					</form>
+					<pre><code class="css">@media only all and (-moz-os-version: <span class="osVersion">windows-win10</span>)</code></pre>
+					<style id="moz_osVersion_stlye">
+					@media only all and (-moz-os-version: windows-win10) {
+						#moz_osVersion_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+						#moz_osVersion_test h4:after {content:'” is applicable'}
+					}
+					</style>
+					<script type="text/javascript" >
+					$(document).ready(function(){
+						$('#moz_osVersion_test form').on('submit change', function(event) {
+							$('.osVersion').text($(this).find('#osVersion').val());
+							$('#moz_osVersion_stlye').text(
+							  '@media only all and (-moz-os-version: ' + $(this).find('#osVersion').val() + ') { '
+							+ '	#moz_osVersion_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }'
+							+ '	#moz_osVersion_test h4:after { content:"” is applicable";} '
+							+ '}'
+							);
+						});
+					});
+					</script>
+					<p>More media features specific for Mozilla can found in the 
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Mozilla-specific_media_features"> 
+					MDN web Docs</a></p>
+				</section>
+				
+			</div>
+		</section>
+	</main>
+	<nav>		
+		<h2>Categories</h2>
+		<ol>
+			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
+			<li><a href="dimensions.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Viewport/Page Dimensions Media Features</a></li>
+			<li><a href="display.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
+			<li><a href="colors.html" title="Test Media Queries for Color Media Features">Color Media Features</a></li>
+			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li> 
+			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
+			<li class="active"><a href="proprietary.html" title="Test proprietary extensions" rel="self">Proprietary Extensions</a></li>
+		</ol>
+	</nav>
+	<aside>
+		<h2>Browser Information</h2>
+		  <p id="browser"></p>
+		  <p id="os"></p>
+		  <h3>Dimensions</h3>
+		  <p id="screensizeReferenze"></p>
+		  <p id="viewportsizeReferenze"></p>
+		  <p id="documentsizeReferenze"></p>
+		  <p id="resolutionReferenze"></p>
+		  <p id="colordepthReferenze"></p>
+	</aside>
+	<footer>
+		<a href="http://human-injection.de/imprint/">Imprint</a>
+	</footer>	
+  </body>
+</html>

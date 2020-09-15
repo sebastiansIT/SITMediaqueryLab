@@ -1,0 +1,181 @@
+﻿html {
+	font-size:62.5%;
+}
+
+body { 
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	font-size: 1.6rem;
+	text-align:center; 
+}
+	
+body > header,
+body > footer {
+	padding: 1.2rem;
+	color: white;
+	background-color: #006400;
+	
+}
+body > header {
+	margin-bottom: 1.6rem;
+	border-radius: 0 0 3.2rem 3.2rem;
+}
+body > footer {
+	margin-top: 1.6rem;
+	border-radius: 3.2rem 3.2rem 0 0;
+}
+
+main {
+	flex-grow: 1;
+}
+
+section {
+	margin-bottom: 3.2rem;
+}
+
+nav,
+aside {
+	margin-top: 3.2rem;
+	border-top: 0.8rem solid #006400;
+	border-radius: 3.2rem 3.2rem 0 0;
+	padding: 0.8rem 1.6rem;
+}
+aside {
+	border-color: #bbbbbb;
+	color: #444444;
+}
+
+h1 {
+	font-size: 1.6rem;
+	margin:0;
+	padding:0;
+}
+
+h2 {
+	margin-top: 1.6rem;
+	margin-bottom: 0.8rem;
+}
+
+h3 {
+	margin-top: 0;
+	margin-bottom: 0.8rem;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+a {
+	color: #006400;
+}
+body > footer a,
+body > nav li:nth-child(odd) a,
+.testcases .sectionContent a {
+	color: inherit;
+}
+
+nav ol {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: block;
+	flex-grow: 1;
+	margin-bottom: 0.8rem;
+	border: 0.1rem solid #006400;
+	padding: 1.6rem;
+}
+nav li:nth-child(odd) {
+	background-color: #006400;
+	color: white;
+}
+nav li.active {
+	padding-top:3.2rem;
+	border-radius: 1.6rem 1.6rem 0 0;
+}
+
+main header,
+main footer {
+    margin: 0;
+}
+
+main .sectionContent {
+    display: flex;
+    flex-wrap: wrap;
+	align-content: flex-start;
+	overflow: hidden;
+}
+
+main .sectionContent section { 
+    min-height:40px; 
+    margin: 0.8rem 1.6rem; 
+    border: 0.1rem solid #006400;
+	border-left: none;
+	border-right: none;
+	border-radius: 3.2rem;
+	padding: 0 2rem;
+    text-align:center; 
+    flex-grow: 1;
+    position: relative;	
+}
+main .sectionContent section:last-child { 
+    flex-grow: 0;   
+}
+main .sectionContent section:only-child {
+	flex-grow: 1;
+}
+
+main .sectionContent h3 {
+	margin: 1rem 0;
+}
+
+.testcases div h2:before,
+.testcases div h3:before,
+.testcases div h4:before {content:'Media feature “'}
+.testcases div h2:after,
+.testcases div h3:after,
+.testcases div h4:after {content:'” is not applicable'}
+
+.deprecated:after,
+.proprietary:after {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: -1rem;
+    right: -3rem;
+    transform: rotate(27deg);
+    transform-origin: left top 0;
+    padding: 0.2em 0.4em;
+    border-radius: 0.4em;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.deprecated:after {
+	content: 'Deprecated';
+	color: white;
+	background-color: red;
+}
+.proprietary:after {
+	content: 'Proprietary';
+	color: black;
+	background-color: yellow;
+}
+
+@media all and (max-width: 400px) {
+    pre {
+        text-align: left;
+        text-align-last: right;
+    }
+}
+
+@media all and (max-width: 800px) {
+    main .sectionContent section:last-child { 
+        flex-grow: 1;
+    }
+}

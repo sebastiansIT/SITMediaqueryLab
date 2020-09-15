@@ -1,0 +1,10 @@
+{
+  "name": "SIT Media Query Laboratory",
+  "short_name": "MQLab",
+  "lang": "en",
+  "scope": "/mediaqueries/",
+  "start_url": "/mediaqueries/index.html",
+  "display": "fullscreen",
+  "orientation": "natural",
+  "background_color": "#006400
+}
