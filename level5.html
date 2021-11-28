@@ -56,7 +56,32 @@
 				</section>
 			</div>
 		</section>
-    <section class="testcases">
+		<section class="testcases">
+			<header><h3><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-data#specifications">Network Preferences</a></h3></header>
+			<div class="sectionContent">
+				<section id="reduceddata_reduce_test">
+					<h4>Prefere Reduced Data</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-data: reduce)</code></pre>
+					<style id="reduceddata_reduce_style">
+						@media only all and (prefers-reduced-data: reduce) {
+							#reduceddata_reduce_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#reduceddata_reduce_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+				<section id="reduceddata_nopref_test">
+					<h4>No Preferenced Data Volume</h4>
+					<pre><code class="css">@media only all and (prefers-reduced-data: no-preference)</code></pre>
+					<style id="reduceddata_nopref_style">
+						@media only all and (prefers-reduced-data: no-preference) {
+							#reduceddata_nopref_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#reduceddata_nopref_test h4:after { content:'” is applicable';}
+						}
+					</style>
+				</section>
+			</div>
+		</section>
+    	<section class="testcases">
 			<header>
 				<h3>Display Technology</h3>
 			</header>
@@ -213,7 +238,7 @@
 				</section>
 			</div>
 		</section>
-    <section class="testcases">
+		<section class="testcases">
 			<header>
 				<h3>Detection of Contrast Preferences</h3>
 			</header>
@@ -250,7 +275,7 @@
 				</section>
 			</div>
 		</section>
-    <section class="testcases">
+    	<section class="testcases">
 			<header>
 				<h3>Detection of Color Schemes Preferences</h3>
 			</header>
@@ -287,7 +312,7 @@
         </section>
 			</div>
 		</section>
-    <section class="testcases">
+    	<section class="testcases">
 			<header>
 				<h3>Detection of Forced Colors Palette</h3>
 			</header>
