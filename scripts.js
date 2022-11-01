@@ -18,6 +18,18 @@ function scrollbarWidth () {
   $('body').css('overflow', 'auto')
   return hiddenWidth - visibleWidth
 }
+
+function scrollbarHeight () {
+  'use strict'
+  var hiddenHeight, visibleHeight
+  $('body').css('overflow', 'hidden')
+  hiddenHeight = $(window).height()
+  $('body').css('overflow', 'scroll')
+  visibleHeight = $(window).height()
+  $('body').css('overflow', 'auto')
+  return hiddenHeight - visibleHeight
+}
+
 /**
  * Returns the width of the viewport as it is defined in the CSS specification
  * (inklusive his scrollbar)
