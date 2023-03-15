@@ -13,18 +13,18 @@
 
     <link rel="stylesheet" type="text/css" href="style.css" />
 	
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="scripts.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
 	<script>
 		function setActualValues() { 
 			if (getResolution('dppx', '') === 1) {
 				$("#screenphysicalwidth_test").css('display', 'none');
 				$("#screenphysicalheight_test").css('display', 'none');
 			}
-			$(".width").text(viewportWidth());
-			$("#width").val(viewportWidth()).change();
-			$(".height").text(viewportHeight());
-			$("#height").val(viewportHeight()).change();
+			//$(".width").text(viewportWidth());
+			//$("#width").val(viewportWidth()).change();
+			//$(".height").text(viewportHeight());
+			//$("#height").val(viewportHeight()).change();
 			$(".devicewidth").text(screen.width);
 			$("#devicewidth").val(screen.width).change();
 			$(".deviceheight").text(screen.height);
@@ -96,6 +96,7 @@
 						<input type="number" id="widthmin" name="widthmin" data-query="min-width" min="1" max="8192" value="1" />
 						<select id="unitminwidth" name="unit" size="1">
 							<option name="px" title="pixels" selected="selected">px</option>
+							<option name="vw" title="viewport width">vw</option>
 							<option name="in" title="inches">in</option>
 							<option name="cm" title="centimeters">cm</option>
 							<option name="mm" title="millimeters">mm</option>
@@ -113,13 +114,14 @@
 					</style>
 				</section>	
 				<section id="width_test">
-					<h4>width <span class="width">1280</span><span class="unit">px</span></h4>
+					<h4>width <span class="width">100</span><span class="unit">vw</span></h4>
 					<form action="#" method="post" onsubmit="return false;">
 						<label for="width">Set width</label>: 
-						<input type="number" id="width" name="width" data-query="width" min="1" max="8192" value="1280" />
+						<input type="number" id="width" name="width" data-query="width" min="1" max="100" value="100" />
 						<select id="unitwidth" name="unit" size="1">
 							<!--<optgroup label="Absolute">-->
-								<option name="px" title="pixels" selected="selected">px</option>
+								<option name="px" title="pixels">px</option>
+								<option name="vw" title="viewport width" selected="selected">vw</option>
 								<option name="in" title="inches">in</option>
 								<option name="cm" title="centimeters">cm</option>
 								<option name="mm" title="millimeters">mm</option>
@@ -131,9 +133,9 @@
 						</select>
 						<input type="submit" value="set" />
 					</form>
-					<pre><code class="css">@media all and (width: <span class="width">1280</span><span class="unit">px</span>)</code></pre>
+					<pre><code class="css">@media all and (width: <span class="width">100</span><span class="unit">vw</span>)</code></pre>
 					<style id="width_style">
-						@media all and (width:1280px) { 
+						@media all and (width:100vw) { 
 							#width_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
 							#width_test h4:after {content:'” is applicable'} 
 						}
@@ -146,6 +148,7 @@
 						<input type="number" id="widthmax" name="widthmax" data-query="max-width" min="1" max="8192" value="4096" />
 						<select id="unitmaxwidth" name="unit" size="1">
 							<option name="px" title="pixels" selected="selected">px</option>
+							<option name="vw" title="viewport width">vw</option>
 							<option name="in" title="inches">in</option>
 							<option name="cm" title="centimeters">cm</option>
 							<option name="mm" title="millimeters">mm</option>
@@ -166,8 +169,8 @@
 					<h4>1px &lt; width &lt; 4096px</h4>
 					<pre><code class="css">@media all and (1px &lt; width &lt; 4096px)</code></pre>
 					<style id="widthrange_style">
-						@media all and (1px &lt; width &lt; 4096px) { 
-							#widthrange_test { background-color: green; border: 3px inset black; color:white; }
+						@media all and (1px < width < 4096px) { 
+							#widthrange_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
 							#widthrange_test h4:after {content:'” is applicable'} 
 						}
 					</style>
@@ -187,6 +190,7 @@
 						<input type="number" id="heightmin" name="heightmin" data-query="min-height" min="1" max="8192" value="1" />
 						<select id="unitminheight" name="unit" size="1">
 							<option name="px" title="pixels" selected="selected">px</option>
+							<option name="vh" title="viewport height">vh</option>
 							<option name="in" title="inches">in</option>
 							<option name="cm" title="centimeters">cm</option>
 							<option name="mm" title="millimeters">mm</option>
@@ -204,13 +208,14 @@
 					</style>
 				</section>	
 				<section id="height_test">
-					<h4>height <span class="height">1280</span><span class="unit">px</span></h4>
+					<h4>height <span class="height">100</span><span class="unit">vh</span></h4>
 					<form action="#" method="post" onsubmit="return false;">
 						<label for="height">Set height</label>: 
-						<input type="number" id="height" name="height" data-query="height" min="1" max="8192" value="1280" />
+						<input type="number" id="height" name="height" data-query="height" min="1" max="100" value="100" />
 						<select id="unitheight" name="unit" size="1">
 							<!--<optgroup label="Absolute">-->
-								<option name="px" title="pixels" selected="selected">px</option>
+								<option name="px" title="pixels">px</option>
+								<option name="vh" title="viewport height" selected="selected">vh</option>
 								<option name="in" title="inches">in</option>
 								<option name="cm" title="centimeters">cm</option>
 								<option name="mm" title="millimeters">mm</option>
@@ -222,9 +227,9 @@
 						</select>
 						<input type="submit" value="set" />
 					</form>
-					<pre><code class="css">@media all and (height: <span class="height">1280</span><span class="unit">px</span>)</code></pre>
+					<pre><code class="css">@media all and (height: <span class="height">100</span><span class="unit">vh</span>)</code></pre>
 					<style id="height_style">
-						@media all and (height:1280px) { 
+						@media all and (height:100vh) { 
 							#height_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
 							#height_test h4:after {content:'” is applicable'} 
 						}
@@ -237,6 +242,7 @@
 						<input type="number" id="heightmax" name="heightmax" data-query="max-height" min="1" max="8192" value="4096" />
 						<select id="unitmaxheight" name="unit" size="1">
 							<option name="px" title="pixels" selected="selected">px</option>
+							<option name="vh" title="viewport height">vh</option>
 							<option name="in" title="inches">in</option>
 							<option name="cm" title="centimeters">cm</option>
 							<option name="mm" title="millimeters">mm</option>
@@ -257,9 +263,9 @@
 					<h4>1px &lt; height &lt; 4096px</h4>
 					<pre><code class="css">@media all and (1px &lt; height &lt; 4096px)</code></pre>
 					<style id="heightrange_style">
-						@media all and (1px &lt; height &lt; 4096px) { 
-							#heightrange_test { background-color: green; border: 3px inset black; color:white; }
-							#heightrange_test h2:after {content:'” is applicable'} 
+						@media all and (1px < height < 4096px) { 
+							#heightrange_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+							#heightrange_test h4:after {content:'” is applicable'} 
 						}
 					</style>
 				</section>
@@ -310,14 +316,14 @@
 						return width/a + "/" + height/a;
 					};
 					$(document).ready(function(){
-						$('.aspectratio').text(ratio($(window).width()+scrollbarWidth(),$(window).height()));
-						$('#aspectratio_style').text("@media only all and (aspect-ratio:" + ratio($(window).width()+scrollbarWidth(),$(window).height()) + ") {  "
+						$('.aspectratio').text(ratio($(window).width()+scrollbarWidth(),$(window).height()+scrollbarHeight()));
+						$('#aspectratio_style').text("@media only all and (aspect-ratio:" + ratio($(window).width()+scrollbarWidth(),$(window).height()+scrollbarHeight()) + ") {  "
 							+ "#aspectratio_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
 							+ "#aspectratio_test h4:after {content:'” is applicable'} "
 						+"}");
 						$(window).resize(function(){
-							$('.aspectratio').text(ratio($(window).width()+scrollbarWidth(),$(window).height()));
-							$('#aspectratio_style').text("@media only all and (aspect-ratio:" + ratio($(window).width()+scrollbarWidth(),$(window).height()) + ") {  "
+							$('.aspectratio').text(ratio($(window).width()+scrollbarWidth(),$(window).height()+scrollbarHeight()));
+							$('#aspectratio_style').text("@media only all and (aspect-ratio:" + ratio($(window).width()+scrollbarWidth(),$(window).height()+scrollbarHeight()) + ") {  "
 								+ "#aspectratio_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } "
 								+ "#aspectratio_test h4:after {content:'” is applicable'} "
 							+"}");
@@ -330,10 +336,10 @@
 				<style id="aspectratiomax_style">
 					@media only all and (max-aspect-ratio: 100/1) {  
 						#aspectratiomax_test { background-color: #006400; border: 0.1rem solid #006400; color:white; } 
-						#aspectratiomax_test h4:after {content:'” is applicable'} 
+						#aspectratiomax_test h4:after { content:'” is applicable' } 
 					}
 				</style>
-				<pre><code class="css">@media only all and (aspect-ratio: <span class="aspectratiomax">100/1</span>)</code></pre>
+				<pre><code class="css">@media only all and (max-aspect-ratio: <span class="aspectratiomax">100/1</span>)</code></pre>
 			</section>
 		</div>
 		</section>
@@ -568,7 +574,7 @@
 						#deviceaspectratiomax_test h4:after {content:'” is applicable'} 
 					}
 				</style>
-				<pre><code class="css">@media only all and (device-aspect-ratio: <span class="deviceaspectratiomax">100/1</span>)</code></pre>
+				<pre><code class="css">@media only all and (max-device-aspect-ratio: <span class="deviceaspectratiomax">100/1</span>)</code></pre>
 			</section>
 		</div>
 		</section>

@@ -1,40 +1,76 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en">
-  <head>
+<head>
     <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
 	<meta name="MobileOptimized" content="width" />
 	<meta name="HandheldFriendly" content="true" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta name="viewport" content="width=device-width" />
-    
 	<meta charset="utf-8" />
-    <title>Proprietary Extensions &ndash; CSS Media Queries &ndash; Lab &ndash; Human Injection</title>
+  	<title>Proprietary Extensions &ndash; CSS Media Queries &ndash; Lab &ndash; Human Injection</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
 
     <style>
-	@media amzn-mobi {
-		#mobi7_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
-		#mobi7_test h4:after {content:'” is supported'}
-	}
-	@media amzn-kf8 {
-		#kf8_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
-		#kf8_test h4:after {content:'” is supported'}
-	}
+      @media only all and (screen-spanning: none) {
+        #screenspanning_none_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+    		#screenspanning_none_test h4:after {content:'” is supported'}
+      }
+      @media only all and (screen-spanning: single-fold-vertical) {
+        #screenspanning_1vertical_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+    		#screenspanning_1vertical_test h4:after {content:'” is supported'}
+      }
+      @media only all and (screen-spanning: single-fold-horizontal) {
+        #screenspanning_1horizontal_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+    		#screenspanning_1horizontal_test h4:after {content:'” is supported'}
+      }
+
+    	@media amzn-mobi {
+    		#mobi7_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+    		#mobi7_test h4:after {content:'” is supported'}
+    	}
+    	@media amzn-kf8 {
+    		#kf8_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
+    		#kf8_test h4:after {content:'” is supported'}
+    	}
     </style>
-  </head>
-  <body>
+</head>
+<body>
 	<header role="banner">
-		<h1>Human Injection Laboratories</h1>
-	</header>	
+		<h1><a href="http://human-injection.de/">Human Injection</a> Laboratories</h1>
+	</header>
 	<main>
-		<h2>CSS Media Queries Test Cases</h2>
-		<section class="testcases">
-			<header>
+		<h2><a href="index.html">CSS Media Queries Test Cases</a></h2>
+
+    <section class="testcases">
+      <header>
+        <h3>Microsoft Edge (Chromium) with dual-screen and foldable devices</h3>
+      </header>
+      <div class="sectionContent">
+        <section id="screenspanning_none_test" class="proprietary">
+          <h4>No screen spanning</h4>
+          <pre><code class="css">@media only all and (screen-spanning: none)</code></pre>
+        </section>
+        <section id="screenspanning_1vertical_test" class="proprietary">
+          <h4>A single fold vertical</h4>
+          <pre><code class="css">@media only all and (screen-spanning: single-fold-vertical)</code></pre>
+        </section>
+        <section id="screenspanning_1horizontal_test" class="proprietary">
+          <h4>A single fold horizontal</h4>
+          <pre><code class="css">@media only all and (screen-spanning: single-fold-horizontal)</code></pre>
+        </section>
+      </div>
+      <footer>
+        <p>See <a href="https://blogs.windows.com/msedgedev/2020/09/14/introducing-dual-screen-foldable-web-apis/">Introducing Web APIs for Dual Screen and Foldable Devices</a> for details.</p>
+      </footer>
+    </section>
+
+    <section class="testcases">
+      <header>
 				<h3>Kindle Devices (Mobi 7 or Kindle Format 8)</h3>
 			</header>
 			<div class="sectionContent">
@@ -56,7 +92,7 @@
 				<section id="moz_osVersion_test" class="proprietary">
 					<h4>-moz-os-version</h4>
 					<form action="#" method="post" onsubmit="return false;">
-						<label for="osinput">OS Version</label>: 
+						<label for="osinput">OS Version</label>:
 						<select id="osVersion" name="osVersion" size="1">
 							<option value="windows-win10">Windows 10</option>
 							<option value="windows-win8">Windows 8</option>
@@ -84,15 +120,15 @@
 						});
 					});
 					</script>
-					<p>More media features specific for Mozilla can found in the 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Mozilla-specific_media_features"> 
+					<p>More media features specific for Mozilla can found in the
+					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Mozilla-specific_media_features">
 					MDN web Docs</a></p>
 				</section>
-				
+
 			</div>
 		</section>
 	</main>
-	<nav>		
+	<nav>
 		<h2>Categories</h2>
 		<ol>
 			<li><a href="mediatypes.html" title="Test Media Types and Keywords">Media Types &amp; Keywords</a></li>
@@ -100,7 +136,7 @@
 			<li><a href="display.html" title="Test Media Queries for Viewport/Page Dimensions Media Features">Display Quality Media Features</a></li>
 			<li><a href="colors.html" title="Test Media Queries for Color Media Features">Color Media Features</a></li>
 			<li><a href="interaction.html" title="Test Media Queries for Interaction Media Feature">Interaction Media Features</a></li>
-			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li> 
+			<li><a href="others.html" title="Test CSS Feature Queries">Other Media Features &amp; Similar Things</a></li>
 			<li><a href="level5.html" title="Test Media Queries Level 5 Features">Media Queries Level 5</a></li>
 			<li class="active"><a href="proprietary.html" title="Test proprietary extensions" rel="self">Proprietary Extensions</a></li>
 		</ol>
@@ -115,9 +151,12 @@
 		  <p id="documentsizeReferenze"></p>
 		  <p id="resolutionReferenze"></p>
 		  <p id="colordepthReferenze"></p>
+			<h3>Monitor Configuration</h3>
+				<p>Segments: <span id="folds">unknown</span></p>
+				<p>Alignment: <span id="foldalignment">unknown</span></p>
 	</aside>
 	<footer>
 		<a href="http://human-injection.de/imprint/">Imprint</a>
-	</footer>	
-  </body>
+	</footer>
+</body>
 </html>

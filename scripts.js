@@ -1,3 +1,4 @@
+'use strict'
 /* global math */
 /* global navigator */
 /* global screen */
@@ -17,6 +18,18 @@ function scrollbarWidth () {
   $('body').css('overflow', 'auto')
   return hiddenWidth - visibleWidth
 }
+
+function scrollbarHeight () {
+  'use strict'
+  var hiddenHeight, visibleHeight
+  $('body').css('overflow', 'hidden')
+  hiddenHeight = $(window).height()
+  $('body').css('overflow', 'scroll')
+  visibleHeight = $(window).height()
+  $('body').css('overflow', 'auto')
+  return hiddenHeight - visibleHeight
+}
+
 /**
  * Returns the width of the viewport as it is defined in the CSS specification
  * (inklusive his scrollbar)
@@ -167,9 +180,35 @@ function showDimension () {
   document.getElementById('colordepthReferenze').textContent = 'Color Depth: ' + screen.colorDepth + ' bit'
 }
 
-$(document).ready(function () {
-  'use strict'
-  window.onresize = showResizableDimension
+const showMonitorConfiguration = () => {
+  if (window.getWindowSegments) {
+    const segments = window.getWindowSegments()
+    const domNumberFolds = document.getElementById('folds')
+    if (domNumberFolds) {
+      domNumberFolds.innerHTML = segments.length
+    }
+
+    const domFoldAlignment = document.getElementById('foldalignment')
+    if (domFoldAlignment) {
+      if (segments.length === 0) {
+        domFoldAlignment.innerHTML = 'no display'
+      } else if (segments.length === 1) {
+        domFoldAlignment.innerHTML = 'single display'
+      } else if (segments.length > 2) {
+        domFoldAlignment.innerHTML = 'complex'
+      } else if (segments[0].top < segments[1].top) {
+        domFoldAlignment.innerHTML = 'horizontal split'
+      } else {
+        domFoldAlignment.innerHTML = 'vertical split'
+      }
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('resize', showResizableDimension)
+  window.addEventListener('resize', showMonitorConfiguration)
   showEnvironment()
   showDimension()
+  showMonitorConfiguration()
 })
