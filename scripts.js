@@ -5,6 +5,11 @@
 /* global window */
 /* global document */
 /* global $ */
+
+if (typeof navigator.serviceWorker !== 'undefined') {
+  navigator.serviceWorker.register('serviceworker.js')
+}
+
 /**
  * Returns the width of a vertical scrollbar.
  */

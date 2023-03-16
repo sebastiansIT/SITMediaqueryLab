@@ -1,10 +1,22 @@
 {
   "name": "SIT Media Query Laboratory",
   "short_name": "MQLab",
+  "icons": [
+    {
+      "src": "ressources/icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
   "lang": "en",
   "scope": "/mediaqueries/",
   "start_url": "/mediaqueries/index.html",
-  "display": "fullscreen",
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
+  "display": "standalone",
   "orientation": "natural",
-  "background_color": "#006400
+  "theme_color": "#006400",
+  "background_color": "#006400"
 }

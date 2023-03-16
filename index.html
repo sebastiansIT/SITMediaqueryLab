@@ -5,13 +5,18 @@
 		<!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
 		<meta name="MobileOptimized" content="width" />
 		<meta name="HandheldFriendly" content="true" />
-		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<meta charset="utf-8" />
 		<title>CSS Media Queries Test Cases &mdash; Sebastians IT Laboratories</title>
 
+		<link rel="manifest" href="manifest.webapp">
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script>
+			if (typeof navigator.serviceWorker !== 'undefined') {
+			  navigator.serviceWorker.register('serviceworker.js')
+			}
+		</script>
 	</head>
 	<body>
 		<header role="banner">

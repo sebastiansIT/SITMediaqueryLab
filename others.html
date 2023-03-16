@@ -5,11 +5,10 @@
     <!-- http://learnthemobileweb.com/tag/handheldfriendly/ -->
     <meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <meta charset="utf-8" />
-    <title>Other Media Features &ndash; Lab &ndash; Human Injection</title>
+	<title>Other Media Features &mdash; CSS Media Queries Test Cases &mdash; Sebastians IT Laboratories</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="manifest" href="manifest.webapp">
@@ -52,7 +51,7 @@
       #displayModeBrowser_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
       #displayModeBrowser_test h4:after { content:'” is applicable'; }
     }
-	@media all and (display-mode: window-controls-overlay) {
+	@media (display-mode: window-controls-overlay) {
       #displayModeControlOverlay_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
       #displayModeControlOverlay_test h4:after { content:'” is applicable'; }
     }
@@ -69,7 +68,6 @@
         #deviceRadius50_test { background-color: #006400; border: 0.1rem solid #006400; color:white; }
         #deviceRadius50_test h4:after { content:'” is applicable';}
     }
-    
     </style>
 </head>
 <body>
@@ -117,8 +115,8 @@
 					<pre><code class="css">@media all and (display-mode: browser)</code></pre>
 				</section>
 				<section id="displayModeControlOverlay_test" class="proprietary">
-					<h4>Browser Display Mode</h4>
-					<pre><code class="css">@media all and (display-mode: browser)</code></pre>
+					<h4>Window Controls Overlay Display Mode</h4>
+					<pre><code class="css">@media all and (display-mode: window-controls-overlay)</code></pre>
 				</section>
 			</div>
         </section>
