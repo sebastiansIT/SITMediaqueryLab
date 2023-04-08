@@ -1,8 +1,8 @@
-const CACHE_NAME = 'mqlab-cache_v2';
+const CACHE_NAME = 'mqlab-cache_v3';
 
 // Add whichever assets you want to pre-cache here:
 const PRECACHE_ASSETS = [
-    'manifest.webapp',
+    'manifest.webmanifest',
     'ressources/icon.png',
     'scripts.js',
     'style.css',
