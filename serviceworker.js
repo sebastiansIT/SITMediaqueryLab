@@ -4,6 +4,7 @@ const CACHE_NAME = 'mqlab-cache_v3';
 const PRECACHE_ASSETS = [
     'manifest.webmanifest',
     'ressources/icon.png',
+    'ressources/icon512.png',
     'scripts.js',
     'style.css',
     'index.html',
